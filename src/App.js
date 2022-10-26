@@ -5,9 +5,11 @@ import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import ArtistView from './components/ArtistView'
 import AlbumView from './components/AlbumView'
+import { DataContext } from './context/DataContext'
+import { SearchContext } from './context/SearchContext'
 
 function App() {
-    let [search, setSearch] = useState('')
+    let searchInput = useRef('')
     let [message, setMessage] = useState('Search for Music!')
     let [data, setData] = useState([])
 
@@ -37,13 +39,16 @@ function App() {
 
     return (
         <div className="App">
-          {message}
-          <Router>
+            <Router>
             <Routes>
               <Route path="/" element={
                 <>
-                  <SearchBar handleSearch={ handleSearch } />
-                  <Gallery data={ data } />
+                  <SearchContext.Provider value={ { term: searchInput, handleSearch: handleSearch} }>
+                    <SearchBar />
+                  </SearchContext.Provider>
+                  <DataContext.Provider value={ data }>
+                    <Gallery />
+                  </DataContext.Provider>
                 </>
               } />
               <Route path="/album/:id" element={ <AlbumView /> } />
