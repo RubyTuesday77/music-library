@@ -8,7 +8,8 @@ function GalleryItem(props) {
         'width': '25vw',
         'height': '20vh',
         'border': '1px solid black',
-        'margin': '2px'
+        'margin': '2px',
+        'position': 'relative'
     }
     
     const detailStyle = {
@@ -16,7 +17,8 @@ function GalleryItem(props) {
         'height': '20vh',
         'border': '1px solid black',
         'margin': '2px',
-        'backgroundImage': `url(${ props.item.artworkUrl100 })`,
+        'position': 'relative',
+        'backgroundImage': `url(${props.item.artworkUrl100})`,
         'backgroundRepeat': 'no-repeat',
         'backgroundSize': 'cover',
         'color': 'yellow'
