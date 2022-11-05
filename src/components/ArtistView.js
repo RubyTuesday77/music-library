@@ -2,6 +2,7 @@
 // ArtistView component to serve specific data about our artist
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import Spinner from './Spinner'
 
 function ArtistView() {
     const navigate = useNavigate()
@@ -42,7 +43,7 @@ function ArtistView() {
 
     return (
         <div>
-            { artistData.length > 0 ? <h2>{ artistData[0].artistName }</h2> : <h2>Loading...</h2> }
+            { artistData.length > 0 ? <h2>{ artistData[0].artistName }</h2> : <Spinner /> }
             { navButtons() }
             { renderAlbums }
         </div>

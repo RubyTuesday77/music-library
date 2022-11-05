@@ -24,7 +24,7 @@ function App() {
     if(data) {
       return (
         <Suspense fallback={ <Spinner /> }>
-          <Gallery data={ data } />
+          <Gallery />
         </Suspense>
       )
     }
