@@ -9,6 +9,7 @@ function AlbumView() {
     const { id } = useParams()
     const [albumData, setAlbumData] = useState([])
 
+
     useEffect(() => {
         const API_URL = `http://localhost:4000/song/${id}`
         const fetchData = async () => {
@@ -18,6 +19,16 @@ function AlbumView() {
         }
         fetchData()
     }, [id])
+
+
+    const navButtons = () => {
+        return (
+            <div>
+                <button onClick={ () => navigate('/') }>Home</button> | <button onClick={ () => navigate(-1) }>Back</button>
+            </div>
+        )
+    }
+
 
     const justSongs = albumData.filter(entry => entry.wrapperType === 'track')
 
@@ -29,19 +40,10 @@ function AlbumView() {
         )
     })
 
-    const navButtons = () => {
-        return (
-            <div>
-                <button onClick={ () => navigate(-1) }>Back</button>
-                |
-                <button onClick={ () => navigate('/') }>Home</button>
-            </div>
-        )
-    }
-
+    
     return (
         <div>
-            { albumData.length > 0 ? <h2>{ albumData[0].albumName }</h2> : <Spinner /> }
+            { albumData.length > 0 ? <h2>{ albumData[0].collectionName }</h2> : <Spinner /> }
             { navButtons() }
             { renderSongs }
         </div>
