@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 function AlbumView() {
-    const navigate = useNavigate()
     const { id } = useParams()
     const [albumData, setAlbumData] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         const API_URL = `http://localhost:4000/song/${id}`
@@ -31,16 +31,14 @@ function AlbumView() {
     const navButtons = () => {
         return (
             <div>
-                <button onClick={ () => navigate(-1) }>Back</button>
-                |
-                <button onClick={ () => navigate('/') }>Home</button>
+                <button onClick={ () => navigate('/') }>Home</button> | <button onClick={ () => navigate(-1) }>Back</button>
             </div>
         )
     }
 
     return (
         <div>
-            { albumData.length > 0 ? <h2>{ albumData[0].albumName }</h2> : <h2>Loading...</h2> }
+            { albumData.length > 0 ? <h2>{ albumData[0].collectionName }</h2> : <h2>Loading...</h2> }
             { navButtons() }
             { renderSongs }
         </div>

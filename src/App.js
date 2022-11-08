@@ -8,8 +8,8 @@ import AlbumView from './components/AlbumView'
 
 function App() {
     let [search, setSearch] = useState('')
-    let [message, setMessage] = useState('Search for Music!')
     let [data, setData] = useState([])
+    let [message, setMessage] = useState('Search for Music!')
 
     const API_URL = 'https://itunes.apple.com/search?term='
 
@@ -37,7 +37,7 @@ function App() {
 
     return (
         <div className="App">
-          {message}
+          { message }
           <Router>
             <Routes>
               <Route path="/" element={
